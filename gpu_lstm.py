@@ -143,7 +143,7 @@ def main():
                 learning_rate = di*(10**zhishu)
                 for layer_num in range(40,60):
                     mse,coe = processOnePerson(filename=file_name,lookback=timestep,dropout_value=0.5,learning_rate=learning_rate,epoch=10,layer_num=layer_num)
-                    print(mse,coe)
+                    print('i am processing ',file_name,' the bestcoe by now',bestcoe)
                     if(coe>bestcoe):
                         bestcoe=coe
                         bestmse = mse
