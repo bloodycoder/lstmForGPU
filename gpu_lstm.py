@@ -151,7 +151,7 @@ def main():
         dataarray.append([file_name,bestcoe,bestmse,besti])
         tobesaved.append([bestcoe,bestmse,besti])
         sio.savemat('../data/output/jiaochaGRU.mat',{'allpeople':tobesaved})
-        print(dataarray)
+        print('tempans is',dataarray)
     print(dataarray)
     
 main()
