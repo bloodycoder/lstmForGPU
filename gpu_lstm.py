@@ -68,6 +68,7 @@ for i in range(10,15):
 '''
 def processOnePerson(filename,lookback=3,dropout_value=0.5,learning_rate=1e-1,epoch=10,layer_num=4):
     #initialize adam
+    size_of_batch = 32
     myadam = optimizers.Adam(lr=learning_rate, epsilon=1e-8)
     fea,lab = getData(filename)
     #normalize 
@@ -77,8 +78,6 @@ def processOnePerson(filename,lookback=3,dropout_value=0.5,learning_rate=1e-1,ep
     fea = create_dataset(fea,lookback)#885xtimestepx85
     lab = lab[:885-1-lookback]        #885,
     lab = lab.tolist()
-    print(lab)
-    print(len(lab))
     #reshape input to [samples,time steps,features]
     length = 885-1-lookback
     PreLabConcat = []
@@ -91,7 +90,7 @@ def processOnePerson(filename,lookback=3,dropout_value=0.5,learning_rate=1e-1,ep
     model.add(GRU(layer_num,input_shape=(lookback,85)))
     model.add(Dense(1))
     model.compile(loss='mean_squared_error', optimizer=myadam)
-    model.fit(trainFea, trainLab, nb_epoch=epoch, batch_size=1, verbose=2)
+    model.fit(trainFea, trainLab, nb_epoch=epoch, batch_size=size_of_batch, verbose=2)
     trainPredict = model.predict(preFea)
     trainPredict = trainPredict.tolist()
     for i in range(len(trainPredict)):
@@ -105,7 +104,7 @@ def processOnePerson(filename,lookback=3,dropout_value=0.5,learning_rate=1e-1,ep
         model.add(GRU(layer_num,input_shape=(lookback,85)))
         model.add(Dense(1))
         model.compile(loss='mean_squared_error', optimizer=myadam)
-        model.fit(trainFea, trainLab, nb_epoch=epoch, batch_size=1, verbose=2)
+        model.fit(trainFea, trainLab, nb_epoch=epoch, batch_size=size_of_batch, verbose=2)
         trainPredict = model.predict(preFea)
         trainPredict = trainPredict.tolist()
         for i in range(len(trainPredict)):
@@ -117,7 +116,7 @@ def processOnePerson(filename,lookback=3,dropout_value=0.5,learning_rate=1e-1,ep
     model.add(GRU(layer_num,input_shape=(lookback,85)))
     model.add(Dense(1))
     model.compile(loss='mean_squared_error', optimizer=myadam)
-    model.fit(trainFea, trainLab, nb_epoch=epoch, batch_size=1, verbose=2)
+    model.fit(trainFea, trainLab, nb_epoch=epoch, batch_size=size_of_batch, verbose=2)
     trainPredict = model.predict(preFea)
     trainPredict = trainPredict.tolist()
     for i in range(len(trainPredict)):
