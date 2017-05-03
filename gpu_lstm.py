@@ -68,7 +68,7 @@ for i in range(10,15):
 '''
 def processOnePerson(filename,lookback=3,dropout_value=0.5,learning_rate=1e-1,epoch=10,layer_num=4):
     #initialize adam
-    size_of_batch = 64
+    size_of_batch = 128
     myadam = optimizers.Adam(lr=learning_rate, epsilon=1e-8)
     fea,lab = getData(filename)
     #normalize 
@@ -142,7 +142,7 @@ def main():
                 zhishu = -random.randint(1,6)
                 learning_rate = di*(10**zhishu)
                 for layer_num in range(20,100):
-                    mse,coe = processOnePerson(filename=file_name,lookback=timestep,dropout_value=0.5,learning_rate=learning_rate,epoch=1,layer_num=layer_num)
+                    mse,coe = processOnePerson(filename=file_name,lookback=timestep,dropout_value=0.5,learning_rate=learning_rate,epoch=10,layer_num=layer_num)
                     print(mse,coe)
                     if(coe>bestcoe):
                         bestcoe=coe
