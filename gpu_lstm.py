@@ -136,12 +136,12 @@ def main():
         bestmse = 0
         bestcoe = 0
         besti = 0
-        for timestep in [12,50]:
-            for lr in range(150):
+        for timestep in [12]:
+            for lr in [1]:
                 di = random.random()*10
                 zhishu = -random.randint(1,6)
                 learning_rate = di*(10**zhishu)
-                for layer_num in range(20,100):
+                for layer_num in [20]:
                     mse,coe = processOnePerson(filename=file_name,lookback=timestep,dropout_value=0.5,learning_rate=learning_rate,epoch=10,layer_num=layer_num)
                     print(mse,coe)
                     if(coe>bestcoe):
