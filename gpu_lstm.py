@@ -68,7 +68,7 @@ for i in range(10,15):
 '''
 def processOnePerson(filename,lookback=3,dropout_value=0.5,learning_rate=1e-1,epoch=10,layer_num=4):
     #initialize adam
-    size_of_batch = 32
+    size_of_batch = 64
     myadam = optimizers.Adam(lr=learning_rate, epsilon=1e-8)
     fea,lab = getData(filename)
     #normalize 
@@ -121,9 +121,9 @@ def processOnePerson(filename,lookback=3,dropout_value=0.5,learning_rate=1e-1,ep
     trainPredict = trainPredict.tolist()
     for i in range(len(trainPredict)):
         PreLabConcat.append(trainPredict[i][0])
-    print (PreLabConcat,'length is ',len(PreLabConcat))
     mse = mean_squared_error(PreLabConcat,lab)
     coe = pearsonr(PreLabConcat,lab)[0]
+    print('mse',mse)
     return mse,coe
 #*************************
 def main():
