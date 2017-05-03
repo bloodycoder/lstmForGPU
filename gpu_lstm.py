@@ -142,7 +142,7 @@ def main():
                 zhishu = -random.randint(1,6)
                 learning_rate = di*(10**zhishu)
                 for layer_num in range(20,100):
-                    mse,coe = processOnePerson(filename=file_name,lookback=timestep,dropout_value=0.5,learning_rate=learning_rate,epoch=1,layer_num=layer_num)
+                    mse,coe = processOnePerson(filename=file_name,lookback=timestep,dropout_value=0.5,learning_rate=learning_rate,epoch=10,layer_num=layer_num)
                     print(mse,coe)
                     if(coe>bestcoe):
                         bestcoe=coe
