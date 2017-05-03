@@ -137,13 +137,14 @@ def main():
         bestmse = 0
         bestcoe = 0
         besti = 0
-        for timestep in [12]:
-            for lr in [1]:
+        for timestep in [12,50]:
+            for lr in range(150):
                 di = random.random()*10
                 zhishu = -random.randint(1,6)
                 learning_rate = di*(10**zhishu)
-                for layer_num in [10]:
+                for layer_num in range(20,100):
                     mse,coe = processOnePerson(filename=file_name,lookback=timestep,dropout_value=0.5,learning_rate=learning_rate,epoch=1,layer_num=layer_num)
+                    print(mse,coe)
                     if(coe>bestcoe):
                         bestcoe=coe
                         bestmse = mse
@@ -155,7 +156,7 @@ def main():
         return 0
     print(dataarray)
     
-#main()
+main()
 """
 plt.plot(lab)
 plt.plot(range(gap,885-1-lookback),trainPredict)
@@ -163,7 +164,7 @@ plt.plot(yuanPredict)
 plt.show()
 print(coe)
 """
-processOnePerson(filename='chengjiejie_20151129_noon.mat',lookback=10,dropout_value=0.5,learning_rate=1e-1,epoch=1,layer_num=10)
+#processOnePerson(filename='chengjiejie_20151129_noon.mat',lookback=10,dropout_value=0.5,learning_rate=1e-1,epoch=1,layer_num=10)
 #pearsonr(trainPredict,lab)
 #mean_squared_error10 0.80975890118 11 (0.81834044198867506  12 0.858959668415 0.0117
 
