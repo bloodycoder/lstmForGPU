@@ -77,7 +77,7 @@ def processOnePerson(filename,lookback=3,dropout_value=0.5,learning_rate=1e-1,ep
     trainFea,preFea = fea[gap0:,:,:],fea[:gap0,:,:]
     trainLab,preLab = lab[gap0:],lab[:gap0]
     model = Sequential()
-    model.add(GRU(layer_num,input_shape=(lookback,85))
+    model.add(GRU(layer_num,input_shape=(lookback,85)))
     model.add(Dense(1))
     model.compile(loss='mean_squared_error', optimizer=myadam)
     model.fit(trainFea, trainLab, epochs=epoch, batch_size=1, verbose=2)
