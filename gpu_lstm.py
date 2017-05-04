@@ -68,7 +68,7 @@ for i in range(10,15):
 '''
 def processOnePerson(filename,lookback=3,dropout_value=0.5,learning_rate=1e-1,epoch=10,layer_num=4):
     #initialize adam
-    size_of_batch = 256
+    size_of_batch = 128
     myadam = optimizers.Adam(lr=learning_rate, epsilon=1e-8)
     fea,lab = getData(filename)
     #normalize 
@@ -130,7 +130,10 @@ def main():
     filelist = os.listdir('../data/labels')
     dataarray = []
     tobesaved = []
+    print (filelist)
     for file_name in filelist:
+        if(file_name in ['lixiaoming_20151022_noon.mat']):
+            continue;
         print(file_name)
         onevalue = []
         bestmse = 0
