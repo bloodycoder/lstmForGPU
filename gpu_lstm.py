@@ -132,7 +132,7 @@ def main():
     tobesaved = []
     print (filelist)
     for file_name in filelist:
-        if(file_name in ['lixiaoming_20151022_noon.mat']):
+        if(file_name in ['lixiaoming_20151022_noon.mat','huqingli_20151122_night.mat']):
             continue;
         print(file_name)
         onevalue = []
