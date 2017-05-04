@@ -144,7 +144,7 @@ def main():
                 di = random.random()*10
                 zhishu = -random.randint(1,6)
                 learning_rate = di*(10**zhishu)
-                for layer_num in range(40,60):
+                for layer_num in range(40,60,2):
                     mse,coe = processOnePerson(filename=file_name,lookback=timestep,dropout_value=0.5,learning_rate=learning_rate,epoch=10,layer_num=layer_num)
                     print('i am processing ',file_name,' the bestcoe by now',bestcoe,'best mse',bestmse)
                     if(coe>bestcoe):
