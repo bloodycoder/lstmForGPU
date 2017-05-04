@@ -17,6 +17,7 @@ import os
 import math
 import matplotlib.pyplot as plt
 import random
+import time
 from keras.preprocessing import sequence
 from keras.models import Sequential
 from keras.layers import Dense, Embedding
@@ -132,6 +133,7 @@ def main():
     tobesaved = []
     print (filelist)
     for file_name in filelist:
+        t0 = time.time()
         if(file_name in ['lixiaoming_20151022_noon.mat','huqingli_20151122_night.mat','chengjiejie_20151129_noon.mat']):
             continue;
         print(file_name)
@@ -145,6 +147,8 @@ def main():
                 zhishu = -random.randint(1,6)
                 learning_rate = di*(10**zhishu)
                 for layer_num in range(30,60,5):
+                    if((time.time()-t0)>3600):
+                        continue;
                     mse,coe = processOnePerson(filename=file_name,lookback=timestep,dropout_value=0.5,learning_rate=learning_rate,epoch=10,layer_num=layer_num)
                     print('i am processing ',file_name,' the bestcoe by now',bestcoe,'best mse',bestmse)
                     if(coe>bestcoe):
