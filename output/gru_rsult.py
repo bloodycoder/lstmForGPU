@@ -1,2 +1,4 @@
-result = [['lixiaoming_20151022_noon.mat',0.772519791438
-]['huqingli_20151122_night.mat',0.932519791438],
+result = [['lixiaoming_20151022_noon.mat',0.772519791438,0.0601
+]['huqingli_20151122_night.mat',0.932519791438,0.022323],
+['chengjiejie_20151129_noon.mat',0.376996548687,0.117210273218],
+[]

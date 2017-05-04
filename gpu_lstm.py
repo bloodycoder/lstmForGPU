@@ -132,7 +132,7 @@ def main():
     tobesaved = []
     print (filelist)
     for file_name in filelist:
-        if(file_name in ['lixiaoming_20151022_noon.mat','huqingli_20151122_night.mat']):
+        if(file_name in ['lixiaoming_20151022_noon.mat','huqingli_20151122_night.mat','chengjiejie_20151129_noon.mat']):
             continue;
         print(file_name)
         onevalue = []
@@ -144,7 +144,7 @@ def main():
                 di = random.random()*10
                 zhishu = -random.randint(1,6)
                 learning_rate = di*(10**zhishu)
-                for layer_num in range(40,60,2):
+                for layer_num in range(30,60,5):
                     mse,coe = processOnePerson(filename=file_name,lookback=timestep,dropout_value=0.5,learning_rate=learning_rate,epoch=10,layer_num=layer_num)
                     print('i am processing ',file_name,' the bestcoe by now',bestcoe,'best mse',bestmse)
                     if(coe>bestcoe):
