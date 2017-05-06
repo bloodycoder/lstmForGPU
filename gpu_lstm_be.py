@@ -145,6 +145,9 @@ def main():
     tobesaved = []
     print (filelist)
     for file_name in filelist:
+        if(file_name in ['lixiaoming_20151022_noon.mat']):
+            continue;
+        #0.721345370739 best mse 0.0101903474721
         t0 = time.time()
         print(file_name)
         onevalue = []
