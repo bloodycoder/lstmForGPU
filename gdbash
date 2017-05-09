@@ -1,0 +1,6 @@
+FILENAMES=(chengjiejie_20151129_noon.mat chenting_20151124_noon_2.mat chuxing_20151106_noon.mat duyuming_20151024_noon.mat fanhaimin_20151105_noon.mat fanhaimin_20151107_noon.mat huqingli_20151122_night.mat jiangxinglin_20141108_noon.mat jiangxinglin_20151012_night.mat lijunkai_20151121_noon.mat lindanyan_20151015_night.mat liuwei_20150914_noon_2.mat liuzhiyong_20151011_noon.mat lixiaoming_20151022_noon.mat mengzhen_20150922_noon.mat qiuyuting_20151017_night.mat ruanhanyang_20151128_noon.mat tangxuting_20151127_noon.mat taoyuchao_20151125_noon.mat wanglili_20150914_night.mat wangtingting_20151024_night.mat wenting_20150928_noon.mat wuhao_20151025_noon.mat wusiyuan_20150929_noon.mat yangzhen_20151014_night.mat yuwei_20151017_noon.mat zhangdongming_20151126_night.mat zhangjingdi_20151128_night.mat zhangnan_20150925_noon.mat zhangxingzan_20150926_noon.mat zhangyafang_20151114_noon.mat zhangzhuwen_20151129_night.mat zhuwenlong_20151016_noon.mat)
+NUM_OF_FILE=33
+for((I=0;I<$NUM_OF_FILE;++I))
+do
+    python3 gpu_lstm_bash.py ${FILENAMES[I]}
+done
