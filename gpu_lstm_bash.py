@@ -159,7 +159,7 @@ def main():
                     bestmse = mse
                     besti = timestep
     f = open("./output/output_lstm","a")
-    ans = " ".join([filename,str(bestcoe),str(bestmse)])
+    ans = " ".join([file_name,str(bestcoe),str(bestmse)])
     f.write(ans)
     f.close()
 
