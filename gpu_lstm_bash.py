@@ -90,7 +90,7 @@ def processOnePerson(filename,lookback=3,dropout_value=0.5,learning_rate=1e-1,ep
     trainFea,preFea = fea[gap0:,:,:],fea[:gap0,:,:]
     trainLab,preLab = lab[gap0:],lab[:gap0]
     model = Sequential()
-    model.add(GRU(layer_num,input_shape=(lookback,85)))
+    model.add(LSTM(layer_num,input_shape=(lookback,85)))
     model.add(Dense(1))
     model.compile(loss='mean_squared_error', optimizer=myadam)
     model.fit(trainFea, trainLab, nb_epoch=epoch, batch_size=size_of_batch, verbose=2)
@@ -109,7 +109,7 @@ def processOnePerson(filename,lookback=3,dropout_value=0.5,learning_rate=1e-1,ep
         trainFea,preFea = np.concatenate((fea[:gap0,:,:],fea[gap1:,:,:]),axis=0) ,fea[gap0:gap1,:,:]
         trainLab,preLab = np.concatenate((lab[:gap0],lab[gap1:]),axis=0) ,lab[gap0:gap1]
         model = Sequential()
-        model.add(GRU(layer_num,input_shape=(lookback,85)))
+        model.add(LSTM(layer_num,input_shape=(lookback,85)))
         model.add(Dense(1))
         model.compile(loss='mean_squared_error', optimizer=myadam)
         model.fit(trainFea, trainLab, nb_epoch=epoch, batch_size=size_of_batch, verbose=2)
@@ -126,7 +126,7 @@ def processOnePerson(filename,lookback=3,dropout_value=0.5,learning_rate=1e-1,ep
     trainFea,preFea = fea[:gap0,:,:],fea[gap0:,:,:]
     trainLab,preLab = lab[:gap0],lab[gap0:]
     model = Sequential()
-    model.add(GRU(layer_num,input_shape=(lookback,85)))
+    model.add(LSTM(layer_num,input_shape=(lookback,85)))
     model.add(Dense(1))
     model.compile(loss='mean_squared_error', optimizer=myadam)
     model.fit(trainFea, trainLab, nb_epoch=epoch, batch_size=size_of_batch, verbose=2)
@@ -147,7 +147,7 @@ def main():
     bestcoe = 0
     besti = 0
     file_name = sys.argv[1]
-    for timestep in [12,30]:
+    for timestep in [12,20,30]:
         for lr in range(50):
             di = random.random()*10
             zhishu = -random.randint(1,6)
