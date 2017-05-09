@@ -153,7 +153,7 @@ def main():
             zhishu = -random.randint(1,6)
             learning_rate = di*(10**zhishu)
             for layer_num in [30,60]:
-                if((time.time()-t0)>3600):
+                if((time.time()-t0)>7200):
                     continue;
                 mse,coe = processOnePerson(filename=file_name,lookback=timestep,dropout_value=0.5,learning_rate=learning_rate,epoch=10,layer_num=layer_num)
                 if(coe>bestcoe):
