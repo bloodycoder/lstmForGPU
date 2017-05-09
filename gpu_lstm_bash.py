@@ -147,20 +147,22 @@ def main():
     bestcoe = 0
     besti = 0
     file_name = sys.argv[1]
-    for timestep in [12]:
-        for lr in range(1):
+    for timestep in [12,30]:
+        for lr in range(50):
             di = random.random()*10
             zhishu = -random.randint(1,6)
             learning_rate = di*(10**zhishu)
-            for layer_num in [30]:
+            for layer_num in [30,60]:
                 mse,coe = processOnePerson(filename=file_name,lookback=timestep,dropout_value=0.5,learning_rate=learning_rate,epoch=10,layer_num=layer_num)
                 if(coe>bestcoe):
                     bestcoe = coe
                     bestmse = mse
                     besti = timestep
+                print("now bestcoe is ",bestcoe)
     f = open("./output/output_lstm","a")
     ans = " ".join([file_name,str(bestcoe),str(bestmse)])
     f.write(ans)
+    f.write('\n')
     f.close()
 
 main()
