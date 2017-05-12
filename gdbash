@@ -2,5 +2,5 @@ FILENAMES=(chengjiejie_20151129_noon.mat chenting_20151124_noon_2.mat chuxing_20
 NUM_OF_FILE=33
 for((I=0;I<$NUM_OF_FILE;++I))
 do
-    CUDA_VISIBLE_DEVICES=0 python3 gpu_lstm_bash.py ${FILENAMES[I]}
+    CUDA_VISIBLE_DEVICES=0 python3 gpu_gru_bash.py ${FILENAMES[I]}
 done
